@@ -20,4 +20,4 @@ function getText(path) {
 	return currentText;
 }
 
-export default getText;
+export { getText };

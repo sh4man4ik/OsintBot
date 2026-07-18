@@ -1,6 +1,6 @@
 import express from 'express';
 
-export default function onlyForRender() {
+export function onlyForRender() {
 	const app = express();
 	const port = process.env.PORT || 5000;
 
