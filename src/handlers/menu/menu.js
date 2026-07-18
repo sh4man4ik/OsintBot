@@ -2,6 +2,7 @@ import { getText } from '../../texts.js/texts.js';
 
 export function menu(ctx) {
 	ctx.reply(getText('commands.menu.text'), {
+		parse_mode: 'Markdown',
 		reply_markup: {
 			inline_keyboard: [
 				[
