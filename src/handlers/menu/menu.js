@@ -1,3 +1,4 @@
+import { bot } from '../../bot.js';
 import { getText } from '../../texts.js/texts.js';
 
 export function menu(ctx) {
@@ -6,21 +7,28 @@ export function menu(ctx) {
 		reply_markup: {
 			inline_keyboard: [
 				[
-					{ text: getText('commands.menu.buttons.keyword'), callback_data: 'btn_keyword' },
-					{ text: getText('commands.menu.buttons.exclude'), callback_data: 'btn_exclude' }
+					{ text: getText('commands.menu.buttons.keyword'), callback_data: 'btn|keyword' },
+					{ text: getText('commands.menu.buttons.exclude'), callback_data: 'btn|exclude' }
 				],
-				[{ text: getText('commands.menu.buttons.filetype'), callback_data: 'btn_filetype' }],
+				[{ text: getText('commands.menu.buttons.filetype'), callback_data: 'btn|filetype' }],
 				[
-					{ text: getText('commands.menu.buttons.site'), callback_data: 'btn_site' },
-					{ text: getText('commands.menu.buttons.related'), callback_data: 'btn_related' }
+					{ text: getText('commands.menu.buttons.site'), callback_data: 'btn|site' },
+					{ text: getText('commands.menu.buttons.related'), callback_data: 'btn|related' }
 				],
 				[
-					{ text: getText('commands.menu.buttons.intitle'), callback_data: 'btn_intitle' },
-					{ text: getText('commands.menu.buttons.intext'), callback_data: 'btn_intext' },
-					{ text: getText('commands.menu.buttons.inurl'), callback_data: 'btn_inurl' }
+					{ text: getText('commands.menu.buttons.intitle'), callback_data: 'btn|intitle' },
+					{ text: getText('commands.menu.buttons.intext'), callback_data: 'btn|intext' },
+					{ text: getText('commands.menu.buttons.inurl'), callback_data: 'btn|inurl' }
 				],
-				[{ text: getText('commands.menu.buttons.search'), callback_data: 'btn_search' }]
+				[{ text: getText('commands.menu.buttons.search'), callback_data: 'btn|search' }]
 			]
 		}
 	});
 }
+
+bot.action(/btn\|(.+)/, async (ctx) => {
+	let buttonOperator = ctx.match[1];
+	console.log(buttonOperator);
+
+	await ctx.answerCbQuery();
+});
