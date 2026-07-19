@@ -15,7 +15,12 @@ bot.action(/btn\|(.+)/, async (ctx) => {
 
 	if (buttonOperator == 'search') {
 		if (ctx.session.requestString) {
-			await ctx.reply(ctx.session.requestString);
+			await ctx.reply(
+				`[${getText('commands.menu.result')}](https://www.google.com/search?q=${encodeURIComponent(ctx.session.requestString)})`,
+				{
+					parse_mode: 'Markdown'
+				}
+			);
 			ctx.session.requestString = '';
 		} else {
 			ctx.reply(getText('commands.menu.empty'));
