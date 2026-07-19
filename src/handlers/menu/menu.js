@@ -1,5 +1,15 @@
+import './menuScene.js';
+
 import { bot } from '../../bot.js';
 import { getText } from '../../texts.js/texts.js';
+
+bot.action(/btn\|(.+)/, async (ctx) => {
+	let buttonOperator = ctx.match[1];
+
+	await ctx.scene.enter('MENU_SCENE', { buttonOperator: buttonOperator });
+
+	await ctx.answerCbQuery();
+});
 
 export function menu(ctx) {
 	ctx.reply(getText('commands.menu.text'), {
@@ -25,10 +35,3 @@ export function menu(ctx) {
 		}
 	});
 }
-
-bot.action(/btn\|(.+)/, async (ctx) => {
-	let buttonOperator = ctx.match[1];
-	console.log(buttonOperator);
-
-	await ctx.answerCbQuery();
-});
