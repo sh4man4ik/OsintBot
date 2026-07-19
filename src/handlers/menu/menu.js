@@ -6,13 +6,33 @@ import { getText } from '../../texts/texts.js';
 bot.action(/btn\|(.+)/, async (ctx) => {
 	let buttonOperator = ctx.match[1];
 
-	await ctx.scene.enter('MENU_SCENE', { buttonOperator: buttonOperator });
+	ctx.session.requestString ??= '';
+
+	if (buttonOperator == 'reset') {
+		await ctx.reply(getText('commands.menu.clear'));
+		ctx.session.requestString = '';
+	}
+
+	if (buttonOperator == 'search') {
+		if (ctx.session.requestString) {
+			await ctx.reply(ctx.session.requestString);
+			ctx.session.requestString = '';
+		} else {
+			ctx.reply(getText('commands.menu.empty'));
+		}
+	}
+
+	if (buttonOperator != 'reset' && buttonOperator != 'search') {
+		await ctx.scene.enter('MENU_SCENE', {
+			buttonOperator: buttonOperator
+		});
+	}
 
 	await ctx.answerCbQuery();
 });
 
-export function menu(ctx) {
-	ctx.reply(getText('commands.menu.text'), {
+export async function menu(ctx) {
+	await ctx.reply(getText('commands.menu.text'), {
 		parse_mode: 'Markdown',
 		reply_markup: {
 			inline_keyboard: [
