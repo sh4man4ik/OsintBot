@@ -1,7 +1,7 @@
 import './menuScene.js';
 
 import { bot } from '../../bot.js';
-import { getText } from '../../texts.js/texts.js';
+import { getText } from '../../texts/texts.js';
 
 bot.action(/btn\|(.+)/, async (ctx) => {
 	let buttonOperator = ctx.match[1];
@@ -30,7 +30,10 @@ export function menu(ctx) {
 					{ text: getText('commands.menu.buttons.intext'), callback_data: 'btn|intext' },
 					{ text: getText('commands.menu.buttons.inurl'), callback_data: 'btn|inurl' }
 				],
-				[{ text: getText('commands.menu.buttons.search'), callback_data: 'btn|search' }]
+				[
+					{ text: getText('commands.menu.buttons.reset'), callback_data: 'btn|reset' },
+					{ text: getText('commands.menu.buttons.search'), callback_data: 'btn|search' }
+				]
 			]
 		}
 	});

@@ -1,7 +1,7 @@
 import { Scenes, session } from 'telegraf';
 
 import { bot } from '../../bot.js';
-import { getText } from '../../texts.js/texts.js';
+import { getText } from '../../texts/texts.js';
 import { message } from 'telegraf/filters';
 
 const menuScene = new Scenes.BaseScene('MENU_SCENE');
