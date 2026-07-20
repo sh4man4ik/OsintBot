@@ -1,4 +1,4 @@
-import './menuScene.js';
+import './scenes/menuScene.js';
 
 import { bot } from '../../bot.js';
 import { getText } from '../../texts/texts.js';
