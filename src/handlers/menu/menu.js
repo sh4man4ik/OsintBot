@@ -16,7 +16,7 @@ bot.action(/btn\|(.+)/, async (ctx) => {
 	if (buttonOperator == 'search') {
 		if (ctx.session.requestString) {
 			await ctx.reply(
-				`[${getText('commands.menu.result')}](https://www.google.com/search?q=${encodeURIComponent(ctx.session.requestString)})`,
+				`[${getText('commands.menu.result')}](https://lite.duckduckgo.com/lite/?q=${encodeURIComponent(ctx.session.requestString)})`,
 				{
 					parse_mode: 'Markdown'
 				}
@@ -43,16 +43,18 @@ export async function menu(ctx) {
 			inline_keyboard: [
 				[
 					{ text: getText('commands.menu.buttons.keyword'), callback_data: 'btn|keyword' },
-					{ text: getText('commands.menu.buttons.exclude'), callback_data: 'btn|exclude' }
+					{ text: getText('commands.menu.buttons.filetype'), callback_data: 'btn|filetype' }
 				],
-				[{ text: getText('commands.menu.buttons.filetype'), callback_data: 'btn|filetype' }],
 				[
-					{ text: getText('commands.menu.buttons.site'), callback_data: 'btn|site' },
-					{ text: getText('commands.menu.buttons.related'), callback_data: 'btn|related' }
+					{ text: getText('commands.menu.buttons.fewer'), callback_data: 'btn|fewer' },
+					{ text: getText('commands.menu.buttons.more'), callback_data: 'btn|more' }
+				],
+				[
+					{ text: getText('commands.menu.buttons.include'), callback_data: 'btn|include' },
+					{ text: getText('commands.menu.buttons.exclude'), callback_data: 'btn|exclude' }
 				],
 				[
 					{ text: getText('commands.menu.buttons.intitle'), callback_data: 'btn|intitle' },
-					{ text: getText('commands.menu.buttons.intext'), callback_data: 'btn|intext' },
 					{ text: getText('commands.menu.buttons.inurl'), callback_data: 'btn|inurl' }
 				],
 				[

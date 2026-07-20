@@ -18,30 +18,56 @@ menuScene.on(message('text'), (ctx) => {
 	let buttonOperator = ctx.scene.state.buttonOperator;
 	let messageText = ctx.message.text;
 
+	ctx.session.requestString ??= '';
+
 	switch (buttonOperator) {
 		case 'keyword':
 			ctx.session.requestString += `"${messageText}" `;
 			break;
-		case 'exclude':
-			ctx.session.requestString += `-${messageText} `;
-			break;
 		case 'filetype':
-			ctx.session.requestString += `filetype:${messageText} `;
+			ctx.session.requestString +=
+				messageText
+					.split(' ')
+					.map((element) => `filetype:${element}`)
+					.join(' ') + ' ';
 			break;
-		case 'site':
-			ctx.session.requestString += `site:${messageText} `;
+		case 'fewer':
+			ctx.session.requestString +=
+				messageText
+					.split(' ')
+					.map((element) => `-${element}`)
+					.join(' ') + ' ';
 			break;
-		case 'related':
-			ctx.session.requestString += `related:${messageText} `;
+		case 'more':
+			ctx.session.requestString +=
+				messageText
+					.split(' ')
+					.map((element) => `+${element}`)
+					.join(' ') + ' ';
+			break;
+		case 'include':
+			ctx.session.requestString += `site:${messageText.split(' ')[0]} `;
+			break;
+		case 'exclude':
+			ctx.session.requestString +=
+				messageText
+					.split(' ')
+					.map((element) => `-site:${element}`)
+					.join(' ') + ' ';
 			break;
 		case 'intitle':
-			ctx.session.requestString += `intitle:${messageText} `;
-			break;
-		case 'intext':
-			ctx.session.requestString += `intext:${messageText} `;
+			ctx.session.requestString +=
+				messageText
+					.split(' ')
+					.map((element) => `intitle:${element}`)
+					.join(' ') + ' ';
 			break;
 		case 'inurl':
-			ctx.session.requestString += `inurl:${messageText} `;
+			ctx.session.requestString +=
+				messageText
+					.split(' ')
+					.map((element) => `inurl:${element}`)
+					.join(' ') + ' ';
 			break;
 		default:
 			ctx.session.requestString = '';
