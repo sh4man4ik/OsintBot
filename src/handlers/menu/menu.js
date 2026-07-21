@@ -10,16 +10,16 @@ bot.action(/btn\|(.+)/, async (ctx) => {
 	ctx.session.requestString ??= '';
 
 	if (buttonOperator == 'reset') {
-		await ctx.reply(getText('commands.menu.clear'));
 		ctx.session.requestString = '';
+		await ctx.reply(getText('commands.menu.clear'));
 	}
 
 	if (buttonOperator == 'search') {
 		if (ctx.session.requestString) {
-			let link = 'https://html.duckduckgo.com/html/?q=' + ctx.session.requestString;
+			let link = 'https://lite.duckduckgo.com/lite/?q=' + ctx.session.requestString;
 			let data = await getData(ctx, link);
 
-			ctx.reply(data);
+			ctx.reply(data, { disable_web_page_preview: true });
 		} else {
 			ctx.reply(getText('commands.menu.empty'));
 		}
