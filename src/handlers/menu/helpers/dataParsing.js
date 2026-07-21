@@ -1,3 +1,4 @@
+import { decodeLink } from './decodeLink.js';
 import { getText } from '../../../texts/texts.js';
 import parse from 'node-html-parser';
 
@@ -7,12 +8,12 @@ export function dataParsing(ctx, result) {
 	let message;
 
 	let links = root
-		.querySelectorAll('.link-text')
+		.querySelectorAll('.result-link')
 		.map((a) => {
 			if (!hasLinks && a.textContent) {
 				hasLinks = true;
 			}
-			return `[${getText('commands.menu.result.link')}](${a.textContent})`;
+			return `${getText('commands.menu.result.link')} [${a.textContent}](${decodeLink(a.getAttribute('href'))})`;
 		})
 		.join('\n');
 
