@@ -8,7 +8,7 @@ export function dataParsing(ctx, result) {
 	let message;
 
 	let links = root
-		.querySelectorAll('.result-link')
+		.querySelectorAll('.result__a')
 		.map((a) => {
 			if (!hasLinks && a.textContent) {
 				hasLinks = true;
