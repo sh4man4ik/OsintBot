@@ -1,3 +1,4 @@
+import { dataParsing } from '../helpers/dataParsing.js';
 import { getText } from '../../../texts/texts.js';
 
 export async function getData(ctx, link) {
@@ -12,7 +13,7 @@ export async function getData(ctx, link) {
 
 		const result = await response.text();
 
-		data = 'Result';
+		data = dataParsing(result);
 
 		ctx.session.requestString = '';
 	} catch (error) {
