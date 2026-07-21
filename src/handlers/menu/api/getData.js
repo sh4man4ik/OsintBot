@@ -13,9 +13,7 @@ export async function getData(ctx, link) {
 
 		const result = await response.text();
 
-		data = dataParsing(result);
-
-		ctx.session.requestString = '';
+		data = dataParsing(ctx, result);
 	} catch (error) {
 		console.log('Error: ' + error);
 
