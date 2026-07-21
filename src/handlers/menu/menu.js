@@ -1,6 +1,7 @@
 import './scenes/menuScene.js';
 
 import { bot } from '../../bot.js';
+import { getData } from './api/getData.js';
 import { getText } from '../../texts/texts.js';
 
 bot.action(/btn\|(.+)/, async (ctx) => {
@@ -15,13 +16,11 @@ bot.action(/btn\|(.+)/, async (ctx) => {
 
 	if (buttonOperator == 'search') {
 		if (ctx.session.requestString) {
-			await ctx.reply(
-				`[${getText('commands.menu.result')}](https://html.duckduckgo.com/html/?q=${encodeURIComponent(ctx.session.requestString)})`,
-				{
-					parse_mode: 'Markdown'
-				}
-			);
-			ctx.session.requestString = '';
+			let link = 'https://html.duckduckgo.com/html/?q=' + ctx.session.requestString;
+
+			let data = await getData(ctx, link);
+
+			ctx.reply(data);
 		} else {
 			ctx.reply(getText('commands.menu.empty'));
 		}
