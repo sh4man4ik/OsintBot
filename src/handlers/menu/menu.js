@@ -19,7 +19,7 @@ bot.action(/btn\|(.+)/, async (ctx) => {
 			let link = 'https://lite.duckduckgo.com/lite/?q=' + ctx.session.requestString;
 			let data = await getData(ctx, link);
 
-			ctx.reply(data, { disable_web_page_preview: true });
+			ctx.reply(data, { parse_mode: 'Markdown', disable_web_page_preview: true });
 		} else {
 			ctx.reply(getText('commands.menu.empty'));
 		}
