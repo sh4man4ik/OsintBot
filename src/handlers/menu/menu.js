@@ -16,7 +16,7 @@ bot.action(/btn\|(.+)/, async (ctx) => {
 	if (buttonOperator == 'search') {
 		if (ctx.session.requestString) {
 			await ctx.reply(
-				`[${getText('commands.menu.result')}](https://lite.duckduckgo.com/lite/?q=${encodeURIComponent(ctx.session.requestString)})`,
+				`[${getText('commands.menu.result')}](https://html.duckduckgo.com/html/?q=${encodeURIComponent(ctx.session.requestString)})`,
 				{
 					parse_mode: 'Markdown'
 				}
