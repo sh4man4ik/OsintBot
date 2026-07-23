@@ -17,7 +17,7 @@ export async function getData(ctx, link) {
 	} catch (error) {
 		console.log('Error: ' + error);
 
-		data = getText('commands.menu.error');
+		data = getText('commands.menu.error', ctx);
 	}
 
 	return data;

@@ -14,16 +14,16 @@ export function dataParsing(ctx, result) {
 			if (!hasLinks && a.textContent) {
 				hasLinks = true;
 			}
-			return `${getText('commands.menu.result.link')} [${a.textContent}](${decodeLink(a.getAttribute('href'))})`;
+			return `${getText('commands.menu.result.link', ctx)} [${a.textContent}](${decodeLink(a.getAttribute('href'))})`;
 		})
 		.join('\n');
 
 	if (hasLinks) {
-		message = `${getText('commands.menu.result.text')}\n\n${links}`;
+		message = `${getText('commands.menu.result.text', ctx)}\n\n${links}`;
 
 		ctx.session.requestString = '';
 	} else {
-		message = getText('commands.menu.error');
+		message = getText('commands.menu.error', ctx);
 	}
 
 	return message;

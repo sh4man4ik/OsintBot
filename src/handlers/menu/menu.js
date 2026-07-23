@@ -11,7 +11,7 @@ bot.action(/operator\|(.+)/, async (ctx) => {
 
 	if (buttonOperator == 'reset') {
 		ctx.session.requestString = '';
-		await ctx.reply(getText('commands.menu.clear'));
+		await ctx.reply(getText('commands.menu.clear', ctx));
 	}
 
 	if (buttonOperator == 'search') {
@@ -21,7 +21,7 @@ bot.action(/operator\|(.+)/, async (ctx) => {
 
 			ctx.reply(data, { parse_mode: 'Markdown', disable_web_page_preview: true });
 		} else {
-			ctx.reply(getText('commands.menu.empty'));
+			ctx.reply(getText('commands.menu.empty', ctx));
 		}
 	}
 
@@ -35,29 +35,29 @@ bot.action(/operator\|(.+)/, async (ctx) => {
 });
 
 export async function menu(ctx) {
-	await ctx.reply(getText('commands.menu.text'), {
+	await ctx.reply(getText('commands.menu.text', ctx), {
 		parse_mode: 'Markdown',
 		reply_markup: {
 			inline_keyboard: [
 				[
-					{ text: getText('commands.menu.buttons.keyword'), callback_data: 'operator|keyword' },
-					{ text: getText('commands.menu.buttons.filetype'), callback_data: 'operator|filetype' }
+					{ text: getText('commands.menu.buttons.keyword', ctx), callback_data: 'operator|keyword' },
+					{ text: getText('commands.menu.buttons.filetype', ctx), callback_data: 'operator|filetype' }
 				],
 				[
-					{ text: getText('commands.menu.buttons.fewer'), callback_data: 'operator|fewer' },
-					{ text: getText('commands.menu.buttons.more'), callback_data: 'operator|more' }
+					{ text: getText('commands.menu.buttons.fewer', ctx), callback_data: 'operator|fewer' },
+					{ text: getText('commands.menu.buttons.more', ctx), callback_data: 'operator|more' }
 				],
 				[
-					{ text: getText('commands.menu.buttons.include'), callback_data: 'operator|include' },
-					{ text: getText('commands.menu.buttons.exclude'), callback_data: 'operator|exclude' }
+					{ text: getText('commands.menu.buttons.include', ctx), callback_data: 'operator|include' },
+					{ text: getText('commands.menu.buttons.exclude', ctx), callback_data: 'operator|exclude' }
 				],
 				[
-					{ text: getText('commands.menu.buttons.intitle'), callback_data: 'operator|intitle' },
-					{ text: getText('commands.menu.buttons.inurl'), callback_data: 'operator|inurl' }
+					{ text: getText('commands.menu.buttons.intitle', ctx), callback_data: 'operator|intitle' },
+					{ text: getText('commands.menu.buttons.inurl', ctx), callback_data: 'operator|inurl' }
 				],
 				[
-					{ text: getText('commands.menu.buttons.reset'), callback_data: 'operator|reset' },
-					{ text: getText('commands.menu.buttons.search'), callback_data: 'operator|search' }
+					{ text: getText('commands.menu.buttons.reset', ctx), callback_data: 'operator|reset' },
+					{ text: getText('commands.menu.buttons.search', ctx), callback_data: 'operator|search' }
 				]
 			]
 		}

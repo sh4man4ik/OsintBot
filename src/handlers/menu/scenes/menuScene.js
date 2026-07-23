@@ -1,5 +1,4 @@
-import { Scenes, session } from 'telegraf';
-
+import { Scenes } from 'telegraf';
 import { bot } from '../../../bot.js';
 import { getText } from '../../../texts/texts.js';
 import { message } from 'telegraf/filters';
@@ -7,11 +6,10 @@ import { message } from 'telegraf/filters';
 const menuScene = new Scenes.BaseScene('MENU_SCENE');
 const stage = new Scenes.Stage([menuScene]);
 
-bot.use(session());
 bot.use(stage.middleware());
 
 menuScene.enter(async (ctx) => {
-	await ctx.reply(getText('commands.menu.enter'));
+	await ctx.reply(getText('commands.menu.enter', ctx));
 });
 
 menuScene.on(message('text'), (ctx) => {
@@ -78,5 +76,5 @@ menuScene.on(message('text'), (ctx) => {
 });
 
 menuScene.leave(async (ctx) => {
-	await ctx.reply(getText('commands.menu.leave'));
+	await ctx.reply(getText('commands.menu.leave', ctx));
 });
