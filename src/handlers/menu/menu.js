@@ -4,7 +4,7 @@ import { bot } from '../../bot.js';
 import { getData } from './api/getData.js';
 import { getText } from '../../texts/texts.js';
 
-bot.action(/btn\|(.+)/, async (ctx) => {
+bot.action(/operator\|(.+)/, async (ctx) => {
 	let buttonOperator = ctx.match[1];
 
 	ctx.session.requestString ??= '';
@@ -40,24 +40,24 @@ export async function menu(ctx) {
 		reply_markup: {
 			inline_keyboard: [
 				[
-					{ text: getText('commands.menu.buttons.keyword'), callback_data: 'btn|keyword' },
-					{ text: getText('commands.menu.buttons.filetype'), callback_data: 'btn|filetype' }
+					{ text: getText('commands.menu.buttons.keyword'), callback_data: 'operator|keyword' },
+					{ text: getText('commands.menu.buttons.filetype'), callback_data: 'operator|filetype' }
 				],
 				[
-					{ text: getText('commands.menu.buttons.fewer'), callback_data: 'btn|fewer' },
-					{ text: getText('commands.menu.buttons.more'), callback_data: 'btn|more' }
+					{ text: getText('commands.menu.buttons.fewer'), callback_data: 'operator|fewer' },
+					{ text: getText('commands.menu.buttons.more'), callback_data: 'operator|more' }
 				],
 				[
-					{ text: getText('commands.menu.buttons.include'), callback_data: 'btn|include' },
-					{ text: getText('commands.menu.buttons.exclude'), callback_data: 'btn|exclude' }
+					{ text: getText('commands.menu.buttons.include'), callback_data: 'operator|include' },
+					{ text: getText('commands.menu.buttons.exclude'), callback_data: 'operator|exclude' }
 				],
 				[
-					{ text: getText('commands.menu.buttons.intitle'), callback_data: 'btn|intitle' },
-					{ text: getText('commands.menu.buttons.inurl'), callback_data: 'btn|inurl' }
+					{ text: getText('commands.menu.buttons.intitle'), callback_data: 'operator|intitle' },
+					{ text: getText('commands.menu.buttons.inurl'), callback_data: 'operator|inurl' }
 				],
 				[
-					{ text: getText('commands.menu.buttons.reset'), callback_data: 'btn|reset' },
-					{ text: getText('commands.menu.buttons.search'), callback_data: 'btn|search' }
+					{ text: getText('commands.menu.buttons.reset'), callback_data: 'operator|reset' },
+					{ text: getText('commands.menu.buttons.search'), callback_data: 'operator|search' }
 				]
 			]
 		}
