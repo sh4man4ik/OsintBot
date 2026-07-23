@@ -6,6 +6,10 @@ OsintBot is a Telegram bot that helps you **find the information** you need usin
 
 Users build a query by adding keywords, searching by file or applying other filters. The algorithm transforms this input into a search string, and then parses DuckDuckGo HTML output to return the results as links.
 
+# Quick Start
+
+The bot can be accessed at https://t.me/osintdorking_bot
+
 # Source Code
 
 1. Clone the repository:
