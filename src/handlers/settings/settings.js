@@ -6,7 +6,7 @@ bot.action(/language\|(.+)/, async (ctx) => {
 
 	ctx.session.language = language;
 
-	ctx.reply(getText('commands.settings.success', ctx));
+	await ctx.reply(getText('commands.settings.success', ctx));
 
 	await ctx.answerCbQuery();
 });

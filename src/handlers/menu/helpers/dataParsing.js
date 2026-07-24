@@ -8,14 +8,26 @@ export function dataParsing(ctx, result) {
 	let message;
 
 	let links = root
-		.querySelectorAll('.result__a')
-		.filter((a) => !a.getAttribute('href').includes('https://duckduckgo.com/y.js'))
+		.querySelectorAll('.result-link')
+		.filter((a) => !a.getAttribute('href')?.includes('https://duckduckgo.com/y.js'))
 		.map((a) => {
 			if (!hasLinks && a.textContent) {
 				hasLinks = true;
 			}
-			return `${getText('commands.menu.result.link', ctx)} [${a.textContent}](${decodeLink(a.getAttribute('href'))})`;
+
+			let decodedLink;
+
+			try {
+				decodedLink = decodeLink(a.getAttribute('href'));
+			} catch (error) {
+				console.log('Error: ' + error);
+
+				return null;
+			}
+
+			return `${getText('commands.menu.result.link', ctx)} [${a.textContent}](${decodedLink})`;
 		})
+		.filter((link) => link != null)
 		.join('\n');
 
 	if (hasLinks) {
