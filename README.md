@@ -33,11 +33,13 @@ npm install
 4. Create a .env file in the root directory:
 
 - `BOT_TOKEN — Your Telegram bot token`
+- `MIXPANEL_TOKEN — Your Mixpanel token`
 
 For example:
 
 ```bash
 BOT_TOKEN="437r436i7xddhjkftu8w4930454t"
+MIXPANEL_TOKEN="rcjirjmeficmk3484c84c5f4j8vfn"
 ```
 
 5. Launch the bot:
@@ -48,7 +50,7 @@ npm run bot
 
 # Tech Stack
 
-The following technologies are used to develop the bot: **JavaScript**, **Node.js** and **Telegraf**.
+The following technologies are used to develop the bot: **JavaScript**, **Node.js** and **Telegraf**. Also **Mixpanel** is used for the bot's analytics.
 
 # Bot Hosting
 
