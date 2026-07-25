@@ -1,7 +1,10 @@
 import { dataParsing } from '../helpers/dataParsing.js';
 import { getText } from '../../../texts/texts.js';
+import { trackEvent } from '../../../analytics/trackEvent.js';
 
 export async function getData(ctx, link) {
+	await trackEvent(ctx, 'bot_search');
+
 	let data;
 
 	try {
