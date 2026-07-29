@@ -34,12 +34,14 @@ npm install
 
 - `BOT_TOKEN — Your Telegram bot token`
 - `MIXPANEL_TOKEN — Your Mixpanel token`
+- `PROXY_URL — Your proxy URL (for example Webshare)`
 
 For example:
 
 ```bash
 BOT_TOKEN="437r436i7xddhjkftu8w4930454t"
 MIXPANEL_TOKEN="rcjirjmeficmk3484c84c5f4j8vfn"
+PROXY_URL="http://user:pass@host:port"
 ```
 
 5. Launch the bot:

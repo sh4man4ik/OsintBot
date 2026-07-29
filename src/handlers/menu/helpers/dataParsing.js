@@ -3,8 +3,6 @@ import { getText } from '../../../texts/texts.js';
 import parse from 'node-html-parser';
 
 export function dataParsing(ctx, result) {
-	console.log(result);
-
 	let root = parse(result);
 	let hasLinks = false;
 	let message;
