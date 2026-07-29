@@ -9,7 +9,6 @@ export function dataParsing(ctx, result) {
 
 	let links = root
 		.querySelectorAll('.result-link')
-		.filter((a) => !a.getAttribute('href')?.includes('https://duckduckgo.com/y.js'))
 		.map((a) => {
 			if (!hasLinks && a.textContent) {
 				hasLinks = true;
