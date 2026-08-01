@@ -5,7 +5,11 @@ import { getData } from './api/getData.js';
 import { getText } from '../../texts/texts.js';
 
 bot.action(/operator\|(.+)/, async (ctx) => {
-	await ctx.answerCbQuery();
+	try {
+		await ctx.answerCbQuery();
+	} catch (error) {
+		console.log('Error' + error);
+	}
 
 	let buttonOperator = ctx.match[1];
 
