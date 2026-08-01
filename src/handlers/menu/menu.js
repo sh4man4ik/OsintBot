@@ -5,6 +5,8 @@ import { getData } from './api/getData.js';
 import { getText } from '../../texts/texts.js';
 
 bot.action(/operator\|(.+)/, async (ctx) => {
+	await ctx.answerCbQuery();
+
 	let buttonOperator = ctx.match[1];
 
 	ctx.session.requestString ??= '';
@@ -30,8 +32,6 @@ bot.action(/operator\|(.+)/, async (ctx) => {
 			buttonOperator: buttonOperator
 		});
 	}
-
-	await ctx.answerCbQuery();
 });
 
 export async function menu(ctx) {
