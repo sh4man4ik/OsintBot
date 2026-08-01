@@ -53,6 +53,10 @@ const RUSSIAN_TEXTS = {
 			clear: '🧹 Поисковый запрос успешно сброшен',
 			empty: '⚠️ Поисковый запрос пустой',
 			error: '❌ Произошла ошибка! Попробуйте еще раз'
+		},
+		donation: {
+			text: '❤️ Поддержать разработчика',
+			button: 'Поддержать'
 		}
 	}
 };
@@ -112,6 +116,10 @@ const ENGLISH_TEXTS = {
 			clear: '🧹 Search query reset successfully',
 			empty: '⚠️ Search query is empty',
 			error: '❌ An error occurred! Please try again'
+		},
+		donation: {
+			text: '❤️ Support the developer',
+			button: 'Support'
 		}
 	}
 };

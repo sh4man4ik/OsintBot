@@ -1,4 +1,5 @@
 import { bot } from './bot.js';
+import { donation } from './handlers/donation/donation.js';
 import { getText } from './texts/texts.js';
 import { menu } from './handlers/menu/menu.js';
 import { settings } from './handlers/settings/settings.js';
@@ -28,4 +29,10 @@ bot.command('menu', async (ctx) => {
 	await trackEvent(ctx, 'bot_menu');
 
 	await menu(ctx);
+});
+
+bot.command('donation', async (ctx) => {
+	await trackEvent(ctx, 'bot_donation');
+
+	await donation(ctx);
 });
