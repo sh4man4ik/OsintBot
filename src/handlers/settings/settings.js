@@ -2,16 +2,16 @@ import { bot } from '../../bot.js';
 import { getText } from '../../texts/texts.js';
 
 bot.action(/language\|(.+)/, async (ctx) => {
+	let language = ctx.match[1];
+	ctx.session.language = language;
+
+	await ctx.reply(getText('commands.settings.success', ctx));
+
 	try {
 		await ctx.answerCbQuery();
 	} catch (error) {
 		console.log('Error' + error);
 	}
-
-	let language = ctx.match[1];
-	ctx.session.language = language;
-
-	await ctx.reply(getText('commands.settings.success', ctx));
 });
 
 export async function settings(ctx) {
