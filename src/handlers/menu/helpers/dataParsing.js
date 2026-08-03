@@ -8,7 +8,7 @@ export function dataParsing(ctx, result) {
 	let message;
 
 	let links = root
-		.querySelectorAll('.result-link')
+		.querySelectorAll('.result__a')
 		.filter((a) => !a.getAttribute('href')?.includes('https://duckduckgo.com/y.js'))
 		.map((a) => {
 			if (!hasLinks && a.textContent) {

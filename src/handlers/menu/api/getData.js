@@ -1,11 +1,13 @@
+import { ProxyAgent, fetch } from 'undici';
+
 import { dataParsing } from '../helpers/dataParsing.js';
-import { fetch } from 'undici';
 import { getText } from '../../../texts/texts.js';
 import { trackEvent } from '../../../analytics/trackEvent.js';
 
 export async function getData(ctx, link) {
 	await trackEvent(ctx, 'bot_search');
 
+	const agent = new ProxyAgent(process.env.PROXY_URL);
 	let data;
 
 	try {
@@ -16,7 +18,8 @@ export async function getData(ctx, link) {
 				Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 				'Accept-Language': 'en-US,en;q=0.9',
 				Referer: 'https://duckduckgo.com/'
-			}
+			},
+			dispatcher: agent
 		});
 
 		if (!response.ok) {
