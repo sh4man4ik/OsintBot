@@ -34,7 +34,7 @@ npm install
 
 - `BOT_TOKEN — Your Telegram bot token`
 - `MIXPANEL_TOKEN — Your Mixpanel token`
-- `SERPAPI_APIKEY — SerpApi API Key`
+- `SERPAPI_APIKEY — Your SerpApi API Key`
 
 For example:
 
