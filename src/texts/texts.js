@@ -24,12 +24,12 @@ const RUSSIAN_TEXTS = {
 				'🔢 — *Можно несколько значений через пробел*\n\n' +
 				'🔑 🔢 *Ключевые слова* — основной запрос\nПример: `утечка данных`\n\n' +
 				'🚫 🔢 *Исключить слова* — убрать страницы с этими словами\nПример: `фейк`\n\n' +
-				'📄 1️⃣ *Типы файла* — искать по формату файла\nПример: `env`\n\n' +
+				'📄 1️⃣ *Тип файла* — искать по формату файла\nПример: `env`\n\n' +
 				'🌐 1️⃣ *На сайте* — искать на указанном домене\nПример: `github.com`\n\n' +
 				'🧭 🔢 *Похожие сайты* — найти похожие по теме домены\nПример: `github.com reddit.com`\n\n' +
 				'📌 🔢 *В заголовке* — слова встречаются в заголовке страницы\nПример: `панель администратора`\n\n' +
 				'📝 🔢 *В тексте* — слова встречаются в содержимом страницы\nПример: `пароль`\n\n' +
-				'🔗 🔢 *В URL* — слова встречаются прямо в ссылке\nПример: `admin/login`\n\n' +
+				'🔗 1️⃣ *В URL* — слово встречается прямо в ссылке\nПример: `admin/login`\n\n' +
 				'❌ *СБРОСИТЬ* — обнулить текущий запрос\n\n' +
 				'🔍 *ПОИСК* — собрать всё в один запрос и найти',
 			buttons: {
@@ -88,12 +88,12 @@ const ENGLISH_TEXTS = {
 				'🔢 — *Multiple values allowed (separated by spaces)*\n\n' +
 				'🔑 🔢 *Keywords* — main search query\nExample: `data breach`\n\n' +
 				'🚫 🔢 *Exclude words* — remove pages with these words\nExample: `fake`\n\n' +
-				'📄 1️⃣ *File types* — search by file format\nExample: `env`\n\n' +
+				'📄 1️⃣ *File type* — search by file format\nExample: `env`\n\n' +
 				'🌐 1️⃣ *On site* — search within a specific domain\nExample: `github.com`\n\n' +
 				'🧭 🔢 *Related sites* — find domain-related websites\nExample: `github.com reddit.com`\n\n' +
 				'📌 🔢 *In title* — words appear in page title\nExample: `admin panel`\n\n' +
 				'📝 🔢 *In text* — words appear in page content\nExample: `password`\n\n' +
-				'🔗 🔢 *In URL* — words appear directly in link\nExample: `admin/login`\n\n' +
+				'🔗 1️⃣ *In URL* — word appear directly in link\nExample: `admin/login`\n\n' +
 				'❌ *RESET* — clear current query\n\n' +
 				'🔍 *SEARCH* — combine everything and search',
 			buttons: {

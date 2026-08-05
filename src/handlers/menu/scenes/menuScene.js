@@ -57,11 +57,7 @@ menuScene.on(message('text'), (ctx) => {
 					.join(' ') + ' ';
 			break;
 		case 'inurl':
-			ctx.session.requestString +=
-				messageText
-					.split(' ')
-					.map((element) => `inurl:${element}`)
-					.join(' ') + ' ';
+			ctx.session.requestString += `inurl:${messageText.split(' ')[0]} `;
 			break;
 		default:
 			ctx.session.requestString = '';
