@@ -22,35 +22,24 @@ menuScene.on(message('text'), (ctx) => {
 		case 'keyword':
 			ctx.session.requestString += `"${messageText}" `;
 			break;
-		case 'filetype':
-			ctx.session.requestString +=
-				messageText
-					.split(' ')
-					.map((element) => `filetype:${element}`)
-					.join(' ') + ' ';
-			break;
-		case 'fewer':
+		case 'exclude':
 			ctx.session.requestString +=
 				messageText
 					.split(' ')
 					.map((element) => `-${element}`)
 					.join(' ') + ' ';
 			break;
-		case 'more':
-			ctx.session.requestString +=
-				messageText
-					.split(' ')
-					.map((element) => `+${element}`)
-					.join(' ') + ' ';
+		case 'filetype':
+			ctx.session.requestString += `filetype:${messageText.split(' ')[0]} `;
 			break;
-		case 'include':
+		case 'site':
 			ctx.session.requestString += `site:${messageText.split(' ')[0]} `;
 			break;
-		case 'exclude':
+		case 'related':
 			ctx.session.requestString +=
 				messageText
 					.split(' ')
-					.map((element) => `-site:${element}`)
+					.map((element) => `related:${element}`)
 					.join(' ') + ' ';
 			break;
 		case 'intitle':
@@ -58,6 +47,13 @@ menuScene.on(message('text'), (ctx) => {
 				messageText
 					.split(' ')
 					.map((element) => `intitle:${element}`)
+					.join(' ') + ' ';
+			break;
+		case 'intext':
+			ctx.session.requestString +=
+				messageText
+					.split(' ')
+					.map((element) => `intext:${element}`)
 					.join(' ') + ' ';
 			break;
 		case 'inurl':

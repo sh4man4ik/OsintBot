@@ -16,13 +16,15 @@ bot.action(/operator\|(.+)/, async (ctx) => {
 
 	if (buttonOperator == 'search') {
 		if (ctx.session.requestString) {
-			let link = 'https://html.duckduckgo.com/html/?q=' + encodeURIComponent(ctx.session.requestString);
-			let data = await getData(ctx, link);
+			let query = ctx.session.requestString;
+			let data = await getData(ctx, query);
 
 			await ctx.reply(data, { parse_mode: 'Markdown', disable_web_page_preview: true });
 		} else {
 			await ctx.reply(getText('commands.menu.empty', ctx));
 		}
+
+		ctx.session.requestString = '';
 	}
 
 	if (buttonOperator != 'reset' && buttonOperator != 'search') {
@@ -45,18 +47,16 @@ export async function menu(ctx) {
 			inline_keyboard: [
 				[
 					{ text: getText('commands.menu.buttons.keyword', ctx), callback_data: 'operator|keyword' },
-					{ text: getText('commands.menu.buttons.filetype', ctx), callback_data: 'operator|filetype' }
-				],
-				[
-					{ text: getText('commands.menu.buttons.fewer', ctx), callback_data: 'operator|fewer' },
-					{ text: getText('commands.menu.buttons.more', ctx), callback_data: 'operator|more' }
-				],
-				[
-					{ text: getText('commands.menu.buttons.include', ctx), callback_data: 'operator|include' },
 					{ text: getText('commands.menu.buttons.exclude', ctx), callback_data: 'operator|exclude' }
+				],
+				[{ text: getText('commands.menu.buttons.filetype', ctx), callback_data: 'operator|filetype' }],
+				[
+					{ text: getText('commands.menu.buttons.site', ctx), callback_data: 'operator|site' },
+					{ text: getText('commands.menu.buttons.related', ctx), callback_data: 'operator|related' }
 				],
 				[
 					{ text: getText('commands.menu.buttons.intitle', ctx), callback_data: 'operator|intitle' },
+					{ text: getText('commands.menu.buttons.intext', ctx), callback_data: 'operator|intext' },
 					{ text: getText('commands.menu.buttons.inurl', ctx), callback_data: 'operator|inurl' }
 				],
 				[

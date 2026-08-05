@@ -4,7 +4,7 @@ OsintBot is a Telegram bot that helps you **find the information** you need usin
 
 # How does it work?
 
-Users build a query by adding keywords, searching by file or applying other filters. The algorithm transforms this input into a search string, and then parses DuckDuckGo HTML output to return the results as links.
+Users build a query by adding keywords, searching by file type, or applying other filters. The algorithm transforms this input into a search string, uses the API to get Google search results, and returns relevant links.
 
 # Quick Start
 
@@ -34,14 +34,14 @@ npm install
 
 - `BOT_TOKEN — Your Telegram bot token`
 - `MIXPANEL_TOKEN — Your Mixpanel token`
-- `PROXY_URL — Your proxy URL (for example Webshare)`
+- `SERPAPI_APIKEY — SerpApi API Key`
 
 For example:
 
 ```bash
 BOT_TOKEN="437r436i7xddhjkftu8w4930454t"
 MIXPANEL_TOKEN="rcjirjmeficmk3484c84c5f4j8vfn"
-PROXY_URL="http://user:pass@host:port"
+SERPAPI_APIKEY="ewldlpxlk4jmcfdljamlcfkjmicf"
 ```
 
 5. Launch the bot:
@@ -52,7 +52,7 @@ npm run bot
 
 # Tech Stack
 
-The following technologies are used to develop the bot: **JavaScript**, **Node.js** and **Telegraf**. Also **Mixpanel** is used for the bot's analytics.
+The following technologies are used to develop the bot: **JavaScript**, **Node.js**, **Telegraf** and **SerpApi**. Also **Mixpanel** is used for the bot's analytics.
 
 # Bot Hosting
 

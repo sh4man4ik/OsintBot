@@ -23,30 +23,31 @@ const RUSSIAN_TEXTS = {
 				'1️⃣ — *Можно только одно значение*\n' +
 				'🔢 — *Можно несколько значений через пробел*\n\n' +
 				'🔑 🔢 *Ключевые слова* — основной запрос\nПример: `утечка данных`\n\n' +
-				'📄 🔢 *Типы файла* — искать по формату файлов (pdf, doc, docx, xls, xlsx, ppt, pptx, html)\nПример: `pdf pptx`\n\n' +
-				'📉 🔢 *Меньше слов* — снизить значимость слов в поиске\nПример: `форум обсуждение`\n\n' +
-				'📈 🔢 *Больше слов* — повысить значимость слов в поиске\nПример: `приватный ключ`\n\n' +
-				'🌐 1️⃣ *На сайте* — искать на указанном сайте\nПример: `github.com`\n\n' +
-				'🚫 🔢 *Без сайтов* — исключить сайты из поиска\nПример: `reddit.com`\n\n' +
+				'🚫 🔢 *Исключить слова* — убрать страницы с этими словами\nПример: `фейк`\n\n' +
+				'📄 1️⃣ *Типы файла* — искать по формату файла\nПример: `env`\n\n' +
+				'🌐 1️⃣ *На сайте* — искать на указанном домене\nПример: `github.com`\n\n' +
+				'🧭 🔢 *Похожие сайты* — найти похожие по теме домены\nПример: `github.com reddit.com`\n\n' +
 				'📌 🔢 *В заголовке* — слова встречаются в заголовке страницы\nПример: `панель администратора`\n\n' +
+				'📝 🔢 *В тексте* — слова встречаются в содержимом страницы\nПример: `пароль`\n\n' +
 				'🔗 🔢 *В URL* — слова встречаются прямо в ссылке\nПример: `admin/login`\n\n' +
 				'❌ *СБРОСИТЬ* — обнулить текущий запрос\n\n' +
 				'🔍 *ПОИСК* — собрать всё в один запрос и найти',
 			buttons: {
 				keyword: '🔑 Ключевые слова',
-				filetype: '📄 Типы файла',
-				fewer: '📉 Меньше слов',
-				more: '📈 Больше слов',
-				include: '🌐 На сайте',
-				exclude: '🚫 Без сайтов',
+				exclude: '🚫 Исключить слова',
+				filetype: '📄 Тип файла',
+				site: '🌐 Сайт',
+				related: '🧭 Похожие сайты',
 				intitle: '📌 В заголовке',
+				intext: '📝 В тексте',
 				inurl: '🔗 В URL',
 				reset: '❌ СБРОСИТЬ',
 				search: '🔍 ПОИСК'
 			},
 			result: {
 				text: '🔎 Результаты поиска: ',
-				link: '🔗 '
+				link: '🔗 ',
+				empty: '⚠️ Результаты поиска пустой'
 			},
 			enter: '💬 Введите значение:',
 			leave: '✅ Значение успешно добавлено',
@@ -86,30 +87,31 @@ const ENGLISH_TEXTS = {
 				'1️⃣ — *Only one value allowed*\n' +
 				'🔢 — *Multiple values allowed (separated by spaces)*\n\n' +
 				'🔑 🔢 *Keywords* — main search query\nExample: `data breach`\n\n' +
-				'📄 🔢 *File types* — search by file format (pdf, doc, docx, xls, xlsx, ppt, pptx, html)\nExample: `pdf pptx`\n\n' +
-				'📉 🔢 *Fewer words* — reduce word importance in search\nExample: `forum discussion`\n\n' +
-				'📈 🔢 *More words* — increase word importance in search\nExample: `private key`\n\n' +
-				'🌐 1️⃣ *On site* — search within a specific website\nExample: `github.com`\n\n' +
-				'🚫 🔢 *Exclude sites* — remove websites from search\nExample: `reddit.com`\n\n' +
+				'🚫 🔢 *Exclude words* — remove pages with these words\nExample: `fake`\n\n' +
+				'📄 1️⃣ *File types* — search by file format\nExample: `env`\n\n' +
+				'🌐 1️⃣ *On site* — search within a specific domain\nExample: `github.com`\n\n' +
+				'🧭 🔢 *Related sites* — find domain-related websites\nExample: `github.com reddit.com`\n\n' +
 				'📌 🔢 *In title* — words appear in page title\nExample: `admin panel`\n\n' +
+				'📝 🔢 *In text* — words appear in page content\nExample: `password`\n\n' +
 				'🔗 🔢 *In URL* — words appear directly in link\nExample: `admin/login`\n\n' +
 				'❌ *RESET* — clear current query\n\n' +
 				'🔍 *SEARCH* — combine everything and search',
 			buttons: {
 				keyword: '🔑 Keywords',
-				filetype: '📄 File types',
-				fewer: '📉 Fewer words',
-				more: '📈 More words',
-				include: '🌐 On site',
-				exclude: '🚫 Exclude sites',
+				exclude: '🚫 Exclude words',
+				filetype: '📄 File type',
+				site: '🌐 Site',
+				related: '🧭 Related sites',
 				intitle: '📌 In title',
+				intext: '📝 In text',
 				inurl: '🔗 In URL',
 				reset: '❌ RESET',
 				search: '🔍 SEARCH'
 			},
 			result: {
 				text: '🔎 Search results: ',
-				link: '🔗 '
+				link: '🔗 ',
+				empty: '⚠️ Search results are empty'
 			},
 			enter: '💬 Enter value:',
 			leave: '✅ Value added successfully',

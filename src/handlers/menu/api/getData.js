@@ -1,36 +1,30 @@
-import { ProxyAgent, fetch } from 'undici';
-
 import { dataParsing } from '../helpers/dataParsing.js';
+import { getJson } from 'serpapi';
 import { getText } from '../../../texts/texts.js';
 import { trackEvent } from '../../../analytics/trackEvent.js';
 
-export async function getData(ctx, link) {
+export async function getData(ctx, query) {
 	await trackEvent(ctx, 'bot_search');
 
-	const agent = new ProxyAgent(process.env.PROXY_URL);
 	let data;
+	let receivedJson;
 
 	try {
-		const response = await fetch(link, {
-			headers: {
-				'User-Agent':
-					'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-				Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-				'Accept-Language': 'en-US,en;q=0.9',
-				Referer: 'https://duckduckgo.com/'
+		await getJson(
+			{
+				engine: 'google',
+				q: query,
+				google_domain: 'google.com',
+				api_key: process.env.SERPAPI_APIKEY
 			},
-			dispatcher: agent
-		});
+			(json) => {
+				receivedJson = json;
+			}
+		);
 
-		if (!response.ok) {
-			throw new Error(response.status);
-		}
-
-		const result = await response.text();
-
-		data = dataParsing(ctx, result);
+		data = dataParsing(ctx, receivedJson);
 	} catch (error) {
-		console.log('Error: ' + error.cause);
+		console.log('Error: ' + error);
 
 		data = getText('commands.menu.error', ctx);
 	}

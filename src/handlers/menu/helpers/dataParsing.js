@@ -1,41 +1,21 @@
-import { decodeLink } from './decodeLink.js';
 import { getText } from '../../../texts/texts.js';
-import parse from 'node-html-parser';
 
-export function dataParsing(ctx, result) {
-	let root = parse(result);
-	let hasLinks = false;
+export function dataParsing(ctx, receivedJson) {
 	let message;
+	let links;
 
-	let links = root
-		.querySelectorAll('.result__a')
-		.filter((a) => !a.getAttribute('href')?.includes('https://duckduckgo.com/y.js'))
-		.map((a) => {
-			if (!hasLinks && a.textContent) {
-				hasLinks = true;
-			}
+	try {
+		links = receivedJson.organic_results
+			.map((result) => `${getText('commands.menu.result.link', ctx)}[${result.title}](${result.link})`)
+			.join('\n');
+	} catch (error) {
+		console.log('Error: ' + error);
+	}
 
-			let decodedLink;
-
-			try {
-				decodedLink = decodeLink(a.getAttribute('href'));
-			} catch (error) {
-				console.log('Error: ' + error);
-
-				return null;
-			}
-
-			return `${getText('commands.menu.result.link', ctx)} [${a.textContent}](${decodedLink})`;
-		})
-		.filter((link) => link != null)
-		.join('\n');
-
-	if (hasLinks) {
+	if (links) {
 		message = `${getText('commands.menu.result.text', ctx)}\n\n${links}`;
-
-		ctx.session.requestString = '';
 	} else {
-		message = getText('commands.menu.error', ctx);
+		message = getText('commands.menu.result.empty', ctx);
 	}
 
 	return message;
