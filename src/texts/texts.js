@@ -93,7 +93,7 @@ const ENGLISH_TEXTS = {
 				'🧭 🔢 *Related sites* — find domain-related websites\nExample: `github.com reddit.com`\n\n' +
 				'📌 🔢 *In title* — words appear in page title\nExample: `admin panel`\n\n' +
 				'📝 🔢 *In text* — words appear in page content\nExample: `password`\n\n' +
-				'🔗 1️⃣ *In URL* — word appear directly in link\nExample: `admin/login`\n\n' +
+				'🔗 1️⃣ *In URL* — word appears directly in link\nExample: `admin/login`\n\n' +
 				'❌ *RESET* — clear current query\n\n' +
 				'🔍 *SEARCH* — combine everything and search',
 			buttons: {
